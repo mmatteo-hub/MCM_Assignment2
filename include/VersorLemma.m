@@ -37,11 +37,10 @@ function rho = VersorLemma(R1, R2)
         v= zeros(3, 1);
         for i= 1:3
             col_i= R(:, i);
-            
-            if((-err_threshold <= col_i(1)) && (col_i(1) <= err_threshold) && ...
-               (-err_threshold <= col_i(2)) && (col_i(2) <= err_threshold) && ...
-               (-err_threshold <= col_i(3)) && (col_i(3) <= err_threshold))
-               
+            if( abs(col_i(1)) > err_threshold || ...
+                abs(col_i(2)) > err_threshold || ...
+                abs(col_i(3)) > err_threshold  )  
+           
                % choose as axis of rotation the non-null column
                v= col_i;
                % normalize the vector
